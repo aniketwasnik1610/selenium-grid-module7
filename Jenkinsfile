@@ -10,7 +10,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/aniketwasnik1610/selenium-grid-module7.git'
+                git branch: 'main', url: 'https://github.com/aniketwasnik1610/selenium-grid-module7.git'
             }
         }
 
