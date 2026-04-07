@@ -10,19 +10,23 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean compile'
+                dir('Selenium_Grid') {
+                    bat 'mvn clean compile'
+                }
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvn test'
+                dir('Selenium_Grid') {
+                    bat 'mvn test'
+                }
             }
         }
 
         stage('Results') {
             steps {
-                junit '**/target/surefire-reports/*.xml'
+                junit 'Selenium_Grid/target/surefire-reports/*.xml'
             }
         }
     }
