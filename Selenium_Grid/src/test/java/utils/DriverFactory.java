@@ -16,7 +16,7 @@ public class DriverFactory {
             options.addArguments("--remote-allow-origins=*");
 
             driver.set(new RemoteWebDriver(
-                    new URL("http://localhost:4444"),
+                    new URL("http://localhost:4444/wd/hub"), // ✅ FIXED
                     options
             ));
 
@@ -31,7 +31,9 @@ public class DriverFactory {
     }
 
     public static void quitDriver() {
-        driver.get().quit();
-        driver.remove();
+        if (driver.get() != null) {   // ✅ IMPORTANT FIX
+            driver.get().quit();
+            driver.remove();
+        }
     }
 }
