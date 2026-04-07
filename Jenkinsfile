@@ -8,12 +8,6 @@ pipeline {
 
     stages {
 
-        stage('Checkout Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/aniketwasnik1610/selenium-grid-module7.git'
-            }
-        }
-
         stage('Build') {
             steps {
                 bat 'mvn clean compile'
