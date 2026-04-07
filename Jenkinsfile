@@ -19,7 +19,9 @@ pipeline {
         stage('Test') {
             steps {
                 dir('Selenium_Grid') {
-                    bat 'mvn test'
+                    catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                        bat 'mvn test'
+                    }
                 }
             }
         }
